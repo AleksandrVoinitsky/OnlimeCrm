@@ -7,14 +7,16 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 
 WORKDIR /app
 
-RUN addgroup --system app && adduser --system --ingroup app --home /home/appuser appuser
+RUN addgroup --system --gid 10001 app \
+    && adduser --system --uid 10001 --ingroup app --home /home/appuser appuser
 
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY --chown=appuser:appuser . .
-RUN mkdir -p /app/staticfiles /app/media /var/lib/onlime \
-    && chown -R appuser:app /app /var/lib/onlime
+COPY --chown=10001:10001 . .
+RUN mkdir -p /app/staticfiles /app/media /data/media \
+    && chown -R 10001:10001 /app /data \
+    && python manage.py collectstatic --noinput
 
 USER appuser
 

@@ -56,7 +56,7 @@ flowchart LR
 | Боты | aiogram 3 для Telegram; отдельный адаптер для MAX |
 | ИИ | адаптеры LLM-провайдеров, ONNX Runtime в воркерах |
 | Тесты | pytest/Django tests, Playwright, контрактные и RAG evaluation-тесты |
-| Поставка | Docker Compose, DockerHosting.ru, GitHub Actions |
+| Поставка | Dockerfile, Amvera, GitHub Actions |
 
 ## Почему не отдельный SPA-фронтенд
 
@@ -104,11 +104,11 @@ WebSocket нужен для живых уведомлений, статусов 
 - [Процесс продаж и заказа](docs/processes/SALES_AND_ORDER.md)
 - [Процесс склада](docs/processes/INVENTORY.md)
 - [Стратегия тестирования](docs/testing/TESTING.md)
-- [Развёртывание на DockerHosting.ru](docs/runbooks/DEPLOYMENT_DOCKERHOSTING.md)
+- [Развёртывание на Amvera](docs/runbooks/DEPLOYMENT_AMVERA.md)
 
 ## Развёртывание
 
-Целевая площадка — **DockerHosting.ru**. На текущем этапе приложение работает
+Целевая площадка — **Amvera**. На текущем этапе приложение работает
 в **одном контейнере**. SQLite хранится в persistent volume, подключённом к
 контейнеру: его нельзя оставлять внутри файловой системы образа.
 
@@ -118,9 +118,9 @@ WebSocket нужен для живых уведомлений, статусов 
 оплат, складских движений, webhook-ботов, RAG или нескольких экземпляров `web`
 проект обязательно переходит на PostgreSQL, Redis и Celery.
 
-После перехода Docker Compose станет единым контрактом запуска для локальной
-разработки, CI и production. Конфигурация будет различаться переменными окружения
-и подключаемыми production-значениями, а не составом прикладного кода.
+После перехода Compose остаётся контрактом локальной разработки и CI. Production
+конфигурация Amvera передаётся через `amvera.yml` и переменные окружения, а не
+изменением прикладного кода.
 
 Целевой состав контейнеров после перехода:
 
@@ -138,7 +138,7 @@ PostgreSQL и Redis будут доступны только во внутрен
 схему при каждом рестарте.
 
 Подробный порядок текущего и целевого развёртывания — в
-[runbook развёртывания](docs/runbooks/DEPLOYMENT_DOCKERHOSTING.md).
+[runbook развёртывания](docs/runbooks/DEPLOYMENT_AMVERA.md).
 
 ### Локальный запуск
 
