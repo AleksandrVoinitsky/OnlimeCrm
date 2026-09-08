@@ -12,7 +12,7 @@ class OperationalEndpointsTests(TestCase):
         response = Client().get("/")
 
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "Вещи, которые")
+        self.assertContains(response, "Свежая молочная")
 
     def test_login_page_is_available(self) -> None:
         response = Client().get("/login/")
