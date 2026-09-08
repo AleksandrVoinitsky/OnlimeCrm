@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Вход в Onlime{% endblock %}
+
+{% block body_class %}login-page{% endblock %}
+
+{% block content %}
+  <main class="login-layout">
+    <section class="login-showcase" aria-labelledby="login-showcase-title">
+      <a class="brand brand--light" href="/" aria-label="Onlime, на главную"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>onlime</span></a>
+      <div class="login-showcase-copy">
+        <p class="eyebrow eyebrow--light"><span></span> Workspace</p>
+        <h1 id="login-showcase-title">Всё важное<br>в <em>одном</em> ритме.</h1>
+        <p>Управляйте работой команды, клиентами и заказами из единого пространства.</p>
+      </div>
+      <div class="login-shape login-shape--circle"></div><div class="login-shape login-shape--arch"></div><div class="login-shape login-shape--line"></div>
+      <p class="login-quote">«Ясность в деталях.<br>Уверенность в решениях.»</p>
+    </section>
+    <section class="login-panel" aria-labelledby="login-title">
+      <div class="login-panel-header"><span>Личный кабинет</span><a href="/">На витрину <span aria-hidden="true">↗</span></a></div>
+      <div class="login-form-wrap">
+        <div class="login-heading"><p class="eyebrow"><span></span> С возвращением</p><h2 id="login-title">Войдите<br>в свой аккаунт</h2><p>Введите рабочие данные, чтобы продолжить.</p></div>
+        <form class="login-form" action="{% url 'login' %}" method="get">
+          <div class="field"><label for="email">Электронная почта</label><input id="email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@company.ru" required></div>
+          <div class="field"><div class="field-label"><label for="password">Пароль</label><a href="#access-help">Не помню пароль</a></div><div class="password-field"><input id="password" name="password" type="password" autocomplete="current-password" placeholder="Введите пароль" required><button type="button" class="password-toggle" data-password-toggle aria-label="Показать пароль" aria-pressed="false"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M2.5 12s3.4-5.5 9.5-5.5 9.5 5.5 9.5 5.5-3.4 5.5-9.5 5.5S2.5 12 2.5 12Z"></path><circle cx="12" cy="12" r="2.5"></circle></svg></button></div></div>
+          <label class="remember"><input type="checkbox" name="remember"><span aria-hidden="true"></span>Запомнить меня</label>
+          <button class="button button-dark button-full" type="submit">Войти <span aria-hidden="true">→</span></button>
+          <p class="form-note" id="access-help">Доступ выдаёт администратор вашей организации.</p>
+        </form>
+      </div>
+      <p class="login-security"><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="10" rx="2"></rect><path d="M8 10V7a4 4 0 0 1 8 0v3"></path></svg> Защищённое соединение</p>
+    </section>
+  </main>
+{% endblock %}

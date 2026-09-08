@@ -1,14 +1,114 @@
-<!doctype html>
-<html lang="ru">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Onlime CRM</title>
-  </head>
-  <body>
-    <main>
-      <h1>Onlime CRM</h1>
-      <p>Базовая веб-оболочка успешно запущена.</p>
-    </main>
-  </body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}Onlime — пространство для осознанных покупок{% endblock %}
+
+{% block body_class %}home-page{% endblock %}
+
+{% block content %}
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="Onlime, на главную">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span>onlime</span>
+    </a>
+    <nav class="main-nav" aria-label="Основная навигация">
+      <a href="#catalog">Каталог</a>
+      <a href="#collections">Коллекции</a>
+      <a href="#about">О нас</a>
+    </nav>
+    <div class="header-actions">
+      <a class="header-link" href="{% url 'login' %}">Войти</a>
+      <a class="bag-link" href="#catalog" aria-label="Перейти к товарам">
+        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 8.5h14l-1 11H6l-1-11Z"></path><path d="M9 9V6a3 3 0 0 1 6 0v3"></path></svg>
+        <span>0</span>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span></span> Новая коллекция / 2026</p>
+        <h1 id="hero-title">Вещи, которые<br>остаются <em>с вами.</em></h1>
+        <p class="hero-text">Отборные предметы для дома и жизни — честные материалы, выверенные формы, удовольствие от каждой детали.</p>
+        <div class="hero-actions">
+          <a class="button button-dark" href="#catalog">Смотреть коллекцию <span aria-hidden="true">↗</span></a>
+          <a class="text-link" href="#about">Наша философия <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+      <div class="hero-art" aria-label="Избранные предметы коллекции">
+        <div class="hero-sun"></div>
+        <div class="hero-arch"></div>
+        <div class="hero-plate"></div>
+        <div class="hero-vase"><span></span></div>
+        <div class="hero-stem hero-stem-one"></div>
+        <div class="hero-stem hero-stem-two"></div>
+        <div class="hero-leaf hero-leaf-one"></div>
+        <div class="hero-leaf hero-leaf-two"></div>
+        <p class="hero-art-note">Форма и функция<br>в равновесии</p>
+      </div>
+      <p class="hero-index" aria-hidden="true">01 <span></span> 04</p>
+    </section>
+
+    <section class="category-strip" aria-label="Категории каталога">
+      <a href="#catalog">Для дома <span>01</span></a>
+      <a href="#catalog">Гардероб <span>02</span></a>
+      <a href="#catalog">Красота <span>03</span></a>
+      <a href="#catalog">Подарки <span>04</span></a>
+    </section>
+
+    <section class="catalog-section" id="catalog" aria-labelledby="catalog-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow"><span></span> Выбор недели</p>
+          <h2 id="catalog-title">Найдено для <em>вас</em></h2>
+        </div>
+        <a class="text-link" href="#collections">Весь каталог <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="product-grid">
+        <article class="product-card">
+          <a class="product-image product-image--lamp" href="#catalog" aria-label="Смотреть лампу Lune">
+            <span class="product-tag">Новинка</span><span class="lamp-shade"></span><span class="lamp-base"></span>
+          </a>
+          <div class="product-copy"><div><h3>Lune</h3><p>Настольная лампа</p></div><strong>12 900 ₽</strong></div>
+        </article>
+        <article class="product-card">
+          <a class="product-image product-image--chair" href="#catalog" aria-label="Смотреть кресло Mellow">
+            <span class="chair-back"></span><span class="chair-seat"></span><span class="chair-leg chair-leg--one"></span><span class="chair-leg chair-leg--two"></span>
+          </a>
+          <div class="product-copy"><div><h3>Mellow</h3><p>Кресло для чтения</p></div><strong>38 500 ₽</strong></div>
+        </article>
+        <article class="product-card">
+          <a class="product-image product-image--ceramics" href="#catalog" aria-label="Смотреть набор керамики Sora">
+            <span class="ceramic ceramic--left"></span><span class="ceramic ceramic--right"></span><span class="ceramic ceramic--bowl"></span>
+          </a>
+          <div class="product-copy"><div><h3>Sora</h3><p>Набор керамики, 3 шт.</p></div><strong>6 800 ₽</strong></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="editorial-section" id="collections" aria-labelledby="editorial-title">
+      <div class="editorial-art"><div class="editorial-shadow"></div><div class="editorial-column"></div><div class="editorial-orb"></div><div class="editorial-branch"></div></div>
+      <div class="editorial-copy">
+        <p class="eyebrow"><span></span> Важное — в деталях</p>
+        <h2 id="editorial-title">Не заполнять<br>пространство.<br><em>Создавать его.</em></h2>
+        <p>Мы выбираем небольшие мастерские и марки, для которых забота о вещи важнее скорости производства.</p>
+        <a class="button button-light" href="#about">Узнать больше <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+
+    <section class="principles" id="about" aria-labelledby="principles-title">
+      <div class="principles-intro"><p class="eyebrow"><span></span> Onlime choices</p><h2 id="principles-title">Покупки<br>со <em>смыслом.</em></h2></div>
+      <div class="principle-list">
+        <article><span>01</span><h3>Честный отбор</h3><p>Только то, что мы готовы выбрать для себя.</p></article>
+        <article><span>02</span><h3>Малые тиражи</h3><p>Вещи с характером, а не бесконечная полка.</p></article>
+        <article><span>03</span><h3>Забота о пути</h3><p>Надёжная упаковка и внимательная доставка.</p></article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <a class="brand brand--light" href="/"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>onlime</span></a>
+    <p>Выбирайте меньше. Выбирайте лучше.</p>
+    <a href="{% url 'login' %}">Для команды <span aria-hidden="true">↗</span></a>
+  </footer>
+{% endblock %}

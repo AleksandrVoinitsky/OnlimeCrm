@@ -6,8 +6,13 @@ from django.shortcuts import render
 
 
 def home(request: HttpRequest):
-    """Render the initial application shell."""
+    """Render the public marketplace landing page."""
     return render(request, "home.html")
+
+
+def login_page(request: HttpRequest):
+    """Render the future staff sign-in page without handling credentials yet."""
+    return render(request, "login.html")
 
 
 def healthcheck(request: HttpRequest) -> JsonResponse:
